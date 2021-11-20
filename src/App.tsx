@@ -1,7 +1,14 @@
 import { FC } from 'react';
 
+import { Provider } from 'react-redux';
+
+import { AutocompleteInput } from './components/AutocompleteInput';
 import { ReturnComponentType } from './types';
 
+import { store } from 'bll/store';
+
 export const App: FC = (): ReturnComponentType => (
-  <div style={{ color: 'red' }}>Hello world</div>
+  <Provider store={store}>
+    <AutocompleteInput />
+  </Provider>
 );
