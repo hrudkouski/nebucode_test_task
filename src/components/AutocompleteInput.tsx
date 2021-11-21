@@ -61,9 +61,11 @@ export const AutocompleteInput: FC = (): ReturnComponentType => {
       setActive(0);
       setIsShow(false);
       setInputText(filtered[active]);
-    } else if (e.key === Key.ArrowUp) {
+    }
+    if (e.key === Key.ArrowUp) {
       if (active === 0) setActive(active - 1);
-    } else if (e.key === Key.ArrowDown) {
+    }
+    if (e.key === Key.ArrowDown) {
       if (active - 1 === filtered.length) setActive(active + 1);
     }
   };
