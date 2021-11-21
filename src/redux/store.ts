@@ -3,10 +3,12 @@ import thunkMiddleWare, { ThunkAction } from 'redux-thunk';
 
 import { UsersActionTypes, usersReducer } from './users_reducer';
 
-// RootReducer
 const rootReducer = combineReducers({
   usersPage: usersReducer,
 });
+
+// Store
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
 
 // Types
 export type AppRootStateType = ReturnType<typeof rootReducer>;
@@ -20,6 +22,3 @@ export type AppThunkType<ReturnType = void> = ThunkAction<
   unknown,
   AppActionType
 >;
-
-// Store
-export const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));

@@ -1,0 +1,62 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.outer {
+    height: 100vh;
+    background-color: #34333B;
+    padding: 10px;
+    margin: 0;
+}
+
+input {
+    border: 2px solid #fff;
+    padding: 8px;
+    width: 350px;
+    background-color: #2e2e36;
+    color: #FFF;
+}
+
+input:focus {
+    border: 2px solid #FF7CAE;
+    outline-style: none;
+    box-shadow: none;
+    background-color: transparent;
+    color: white;
+}
+
+.no_autocomplete {
+    color: #FFF;
+    padding: 8px;
+}
+
+.autocomplete {
+    border: 2px solid #FF7CAE;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow-y: auto;
+    padding-left: 0;
+    width: calc(350px + 1rem);
+    color: #fff;
+    background-color: #34333B;
+}
+
+.autocomplete li {
+    padding: 8px;
+}
+
+.autocomplete > .active,
+.autocomplete li:hover,
+.autocomplete li:focus {
+    background-color: #FF7CAE;
+    cursor: pointer;
+    font-weight: 700;
+    color: #000;
+}
+
+.autocomplete li:not(:last-of-type) {
+    border-bottom: 1px solid #FF7CAE;
+}

@@ -30,6 +30,7 @@
     "no-debugger": "error",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
+    "default-param-last": "off",
     "no-underscore-dangle": "off",
     "no-multiple-empty-lines": [
       "error",

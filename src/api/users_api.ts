@@ -2,12 +2,11 @@ import { instance } from './api';
 
 export const usersApi = {
   getUsers() {
-    return instance.get<GetUsersItemsType[]>(`users`).then(res => res.data);
+    return instance.get<GetUsersType[]>(`users`).then(res => res.data);
   },
 };
 
-// Types
-export type GetUsersItemsType = {
+export type GetUsersType = {
   id: number;
   name: string;
   username: string;

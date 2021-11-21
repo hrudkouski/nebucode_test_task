@@ -1,19 +1,16 @@
 import { AppThunkType, GetActionsTypes } from './store';
 
-import { GetUsersItemsType, usersApi } from 'dal/users_api';
+import { GetUsersType, usersApi } from 'api/users_api';
 
 enum Users {
   SET_USERS = 'nebucode_test_task/users_reducer/SET_USERS',
 }
 
-// Initial State
 const initialState = {
-  users: [] as GetUsersItemsType[],
+  users: [] as GetUsersType[],
 };
 
-// Reducer
 export const usersReducer = (
-  // eslint-disable-next-line default-param-last
   state = initialState,
   action: UsersActionTypes,
 ): UsersPageInitialStateType => {
@@ -25,21 +22,18 @@ export const usersReducer = (
   }
 };
 
-// Action Creators
 export const usersActions = {
-  setUsers: (users: GetUsersItemsType[]) =>
+  setUsers: (users: GetUsersType[]) =>
     ({
       type: Users.SET_USERS,
       users,
     } as const),
 };
 
-// ThunkCreator
 export const getResponseUsers = (): AppThunkType => async dispatch => {
   const res = await usersApi.getUsers();
   dispatch(usersActions.setUsers(res));
 };
 
-// Types
 export type UsersPageInitialStateType = typeof initialState;
 export type UsersActionTypes = GetActionsTypes<typeof usersActions>;
