@@ -15,19 +15,20 @@ import { ReturnComponentType } from '../types';
 
 import s from './AutocompleteInput.module.css';
 
+enum Class {
+  Active = 'active',
+}
+enum Key {
+  Enter = 'Enter',
+  ArrowUp = 'ArrowUp',
+  ArrowDown = 'ArrowDown',
+}
+
 export const AutocompleteInput: FC = (): ReturnComponentType => {
   const [inputText, setInputText] = useState<string>('');
   const [isShow, setIsShow] = useState<boolean>(false);
-  const [active, setActive] = useState<number>(0);
+  const [active, setActive] = useState<number>(-1);
   const [filtered, setFiltered] = useState<string[]>([]);
-  enum Class {
-    Active = 'active',
-  }
-  enum Key {
-    Enter = 'Enter',
-    ArrowUp = 'ArrowUp',
-    ArrowDown = 'ArrowDown',
-  }
 
   const usersNames = useSelector(getUsersSelector);
 
@@ -63,10 +64,14 @@ export const AutocompleteInput: FC = (): ReturnComponentType => {
       setInputText(filtered[active]);
     }
     if (e.key === Key.ArrowUp) {
-      if (active === 0) setActive(active - 1);
+      if (active !== -1) {
+        setActive(active - 1);
+      }
     }
     if (e.key === Key.ArrowDown) {
-      if (active - 1 === filtered.length) setActive(active + 1);
+      if (active !== filtered.length - 1) {
+        setActive(active + 1);
+      }
     }
   };
 
@@ -78,7 +83,7 @@ export const AutocompleteInput: FC = (): ReturnComponentType => {
             {filtered.map((suggestion, index) => {
               let className;
               if (index === active) {
-                className = Class.Active;
+                className = s[Class.Active];
               }
               return (
                 <li className={className} key={suggestion}>

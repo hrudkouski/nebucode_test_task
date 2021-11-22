@@ -1,3 +1,5 @@
+import { toast } from 'react-hot-toast';
+
 import { AppThunkType, GetActionsTypes } from './store';
 
 import { GetUsersType, usersApi } from 'api/users_api';
@@ -31,8 +33,13 @@ export const usersActions = {
 };
 
 export const getResponseUsers = (): AppThunkType => async dispatch => {
-  const res = await usersApi.getUsers();
-  dispatch(usersActions.setUsers(res));
+  try {
+    const res = await usersApi.getUsers();
+    dispatch(usersActions.setUsers(res));
+    toast.success('Users have been received');
+  } catch (err) {
+    toast.error('Some error occurred');
+  }
 };
 
 export type UsersPageInitialStateType = typeof initialState;

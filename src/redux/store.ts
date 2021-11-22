@@ -7,10 +7,8 @@ const rootReducer = combineReducers({
   usersPage: usersReducer,
 });
 
-// Store
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
 
-// Types
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 export type AppActionType = UsersActionTypes;
 export type GetActionsTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U }
